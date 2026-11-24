@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Until I See You, Nahlela — My Quinn</title>
+  
+  <!-- Favicon / Heart -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌹</text></svg>">
+  <meta name="description" content="A romantic countdown timer dedicated to Nahlela, my Quinn. Counting down every second until we meet again.">
+
+  <!-- Romantic Luxury Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Romantic Audio -->
+  <audio id="romanticAudio" src="assets/romantic-song.mp3" loop preload="auto"></audio>
+
+  <!-- Romantic Canvas for Gentle Floating Rose Petals & Sparkling Bokeh -->
+  <canvas id="petalsCanvas"></canvas>
+
+  <!-- Ambient Rose Glow Background -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-bottom"></div>
+
+  <div class="love-app-container">
+
+    <!-- Header: Pure Romance, Zero Customization Clutter for Quinn -->
+    <header class="love-header">
+      <div class="love-badge" id="badgeAdminTrigger" title="Nahlela • My Quinn">
+        <span class="heart-pulse">❤️</span>
+        <span>NAHLELA &bull; MY QUINN</span>
+      </div>
+
+      <!-- Romantic Song Audio Controller -->
+      <button id="musicToggleBtn" class="love-music-pill" aria-label="Toggle romantic music">
+        <span class="music-icon" id="musicIcon">🎵</span>
+        <span class="music-text" id="musicText">Play Song</span>
+        <span class="music-equalizer" id="musicEqualizer">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </header>
+
+    <!-- Main Love Stage -->
+    <main class="love-card">
+
+      <!-- Romantic Photo Frame -->
+      <div class="photo-container">
+        <div class="photo-glow-ring"></div>
+        <div class="photo-frame">
+          <img src="assets/flower-holding.jpg" alt="Holding a red flower together with Nahlela" class="love-photo">
+          <div class="photo-overlay"></div>
+          <div class="photo-tag">Forever Yours</div>
+        </div>
+      </div>
+
+      <!-- Love Dedication Titles -->
+      <div class="love-typography">
+        <span class="calligraphy-script">For my lovely Quinn</span>
+        <h1 class="love-title">Until I Hold You In My Arms</h1>
+        <p class="love-quote">“Distance means so little when someone means so much.”</p>
+      </div>
+
+      <!-- Romantic Countdown Display: Days, Hours, Minutes, Seconds -->
+      <div class="countdown-row" id="countdownRow">
+
+        <!-- Days -->
+        <div class="time-box">
+          <div class="time-digit-wrap">
+            <span class="time-digit" id="daysVal">00</span>
+          </div>
+          <span class="time-label">DAYS</span>
+        </div>
+
+        <span class="time-colon">&hearts;</span>
+
+        <!-- Hours -->
+        <div class="time-box">
+          <div class="time-digit-wrap">
+            <span class="time-digit" id="hoursVal">00</span>
+          </div>
+          <span class="time-label">HOURS</span>
+        </div>
+
+        <span class="time-colon">&hearts;</span>
+
+        <!-- Minutes -->
+        <div class="time-box">
+          <div class="time-digit-wrap">
+            <span class="time-digit" id="minutesVal">00</span>
+          </div>
+          <span class="time-label">MINUTES</span>
+        </div>
+
+        <span class="time-colon">&hearts;</span>
+
+        <!-- Seconds -->
+        <div class="time-box">
+          <div class="time-digit-wrap">
+            <span class="time-digit" id="secondsVal">00</span>
+          </div>
+          <span class="time-label">SECONDS</span>
+        </div>
+
+      </div>
+
+      <!-- Progress / Heartbeat Tracker -->
+      <div class="love-progress-container">
+        <div class="progress-details">
+          <span id="targetDateText">Counting down to our special day</span>
+          <span id="journeyPercent">0.0% closer</span>
+        </div>
+        <div class="love-progress-bar">
+          <div class="love-progress-fill" id="loveProgressFill">
+            <span class="progress-heart-head">&hearts;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Love Expression: Tap to Send a Kiss/Heart (With Mobile Vibration) -->
+      <div class="love-action-area">
+        <button id="sendLoveBtn" class="btn-send-love" aria-label="Send a heart to Quinn">
+          <span class="heart-icon-bounce">💖</span>
+          <span class="btn-love-text">Send Quinn A Kiss</span>
+          <span class="kisses-badge" id="kissesCount">0</span>
+        </button>
+        <p class="love-hint" id="loveMessageHint">Tap to send a sweet kiss to Nahlela</p>
+      </div>
+
+    </main>
+
+    <!-- Sweet Minimal Footer -->
+    <footer class="love-footer">
+      <span>Dedicated with all my heart to Nahlela</span>
+    </footer>
+
+  </div>
+
+  <!-- Discreet Admin Setting Panel (Only accessible by you to set meeting time & generate share link) -->
+  <div class="admin-panel-backdrop" id="adminModal">
+    <div class="admin-panel-card">
+      <div class="admin-header">
+        <div class="admin-title-wrap">
+          <span class="admin-badge-icon">👑</span>
+          <h3>Admin: Set Meeting Time</h3>
+        </div>
+        <button id="closeAdminBtn" class="admin-close" aria-label="Close">&times;</button>
+      </div>
+      <p class="admin-desc">Set the exact reunion date and time for Nahlela. When she opens the link you share, she sees this countdown with zero edit controls.</p>
+
+      <form id="adminForm" class="admin-form">
+        <div class="form-group">
+          <label for="adminDateTime">Meeting Date & Time</label>
+          <input type="datetime-local" id="adminDateTime" required>
+        </div>
+
+        <div class="form-group">
+          <label for="adminNote">Sweet Occasion Note</label>
+          <input type="text" id="adminNote" placeholder="e.g. Until our airport reunion" maxlength="50">
+        </div>
+
+        <div class="admin-actions">
+          <button type="submit" class="btn-admin-save">Save Meeting Time &hearts;</button>
+          <button type="button" id="copyShareLinkBtn" class="btn-admin-share">Copy Link for Nahlela 🔗</button>
+        </div>
+        <span class="copy-alert" id="copyAlert"></span>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
